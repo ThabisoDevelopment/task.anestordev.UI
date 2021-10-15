@@ -78,6 +78,8 @@ export default {
             const userData = { email: user.email, password: user.password }
             try {
                 const { data } = await axios.post("/oauth/login", userData)
+                localStorage.setItem('username', data.user.name)
+                localStorage.setItem('user_img', data.user.img)
                 localStorage.setItem('token', data.token)
                 window.location.href = "/"
             } catch (error) {

@@ -95,6 +95,8 @@ export default {
                 const registerUser = await axios.post("/oauth/register", newUser)
                 console.log(registerUser.data.message)
                 const { data } = await axios.post("/oauth/login", { email: newUser.email, password: newUser.password })
+                localStorage.setItem('username', data.user.name)
+                localStorage.setItem('user_img', data.user.img)
                 localStorage.setItem('token', data.token)
                 window.location.href = "/"
             } catch (error) {
